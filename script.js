@@ -1,0 +1,34 @@
+document.getElementById('videoForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    const videoLink = document.getElementById('videoLink').value;
+    const videoTitle = document.getElementById('videoTitle').value;
+    
+    if (videoLink && videoTitle) {
+        addVideoToList(videoLink, videoTitle);
+        document.getElementById('videoForm').reset();
+    }
+});
+
+function addVideoToList(link, title) {
+    const videoList = document.getElementById('videoList');
+    
+    const videoItem = document.createElement('div');
+    videoItem.className = 'video-item';
+    
+    const videoTitle = document.createElement('h3');
+    videoTitle.textContent = title;
+    
+    const videoFrame = document.createElement('iframe');
+    videoFrame.src = link.replace("watch?v=", "embed/");
+    videoFrame.width = "100%";
+    videoFrame.height = "200";
+    videoFrame.frameBorder = "0";
+    videoFrame.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+    videoFrame.allowFullscreen = true;
+    
+    videoItem.appendChild(videoTitle);
+    videoItem.appendChild(videoFrame);
+    
+    videoList.appendChild(videoItem);
+}
