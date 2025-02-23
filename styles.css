@@ -1,78 +1,131 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+/* বেসিক রিসেট এবং ডার্ক থিম */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1a1a1a; /* ডার্ক ব্যাকগ্রাউন্ড */
+    color: #ffffff; /* সাদা টেক্সট */
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
+    padding: 20px;
 }
 
 .container {
-    background-color: #fff;
+    background-color: #2d2d2d; /* ডার্ক কন্টেইনার */
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 400px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 600px; /* সর্বোচ্চ প্রস্থ */
     text-align: center;
 }
 
 h1 {
     margin-bottom: 20px;
+    font-size: 24px;
+    color: #ffffff; /* সাদা টেক্সট */
 }
 
 form {
     display: flex;
     flex-direction: column;
+    gap: 10px; /* ইনপুট ফিল্ডের মধ্যে ফাঁক */
 }
 
 input {
-    margin-bottom: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    padding: 12px;
+    border: 1px solid #444; /* ডার্ক বর্ডার */
+    border-radius: 8px;
+    background-color: #3d3d3d; /* ডার্ক ইনপুট ব্যাকগ্রাউন্ড */
+    color: #ffffff; /* সাদা টেক্সট */
+    font-size: 16px;
+}
+
+input::placeholder {
+    color: #999; /* প্লেসহোল্ডার কালার */
 }
 
 button {
-    padding: 10px;
-    background-color: #28a745;
+    padding: 12px;
+    background-color: #28a745; /* সবুজ বাটন */
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background-color: #218838;
+    background-color: #218838; /* হোভারে গাঢ় সবুজ */
 }
 
 #videoList {
     margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* ভিডিও আইটেমের মধ্যে ফাঁক */
 }
 
 .video-item {
-    margin-bottom: 10px;
-    padding: 10px;
-    background-color: #f8f9fa;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    padding: 15px;
+    background-color: #3d3d3d; /* ডার্ক ভিডিও আইটেম ব্যাকগ্রাউন্ড */
+    border: 1px solid #444; /* ডার্ক বর্ডার */
+    border-radius: 8px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    gap: 10px; /* ভিডিও এবং বাটনের মধ্যে ফাঁক */
+}
+
+.video-item h3 {
+    font-size: 18px;
+    color: #ffffff; /* সাদা টেক্সট */
 }
 
 .video-item iframe {
     width: 100%;
     height: 200px;
     border: none;
+    border-radius: 8px;
 }
 
 .video-item button {
-    background-color: #dc3545;
-    margin-left: 10px;
+    background-color: #dc3545; /* লাল ডিলিট বাটন */
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
 }
 
 .video-item button:hover {
-    background-color: #c82333;
+    background-color: #c82333; /* হোভারে গাঢ় লাল */
+}
+
+/* রেস্পন্সিভ ডিজাইন */
+@media (max-width: 600px) {
+    .container {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    input, button {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .video-item iframe {
+        height: 150px;
+    }
 }
