@@ -6,6 +6,7 @@ document.getElementById('videoForm').addEventListener('submit', function(event) 
     
     if (videoLink && videoTitle) {
         addVideoToList(videoLink, videoTitle);
+        saveVideoToLocalStorage(videoLink, videoTitle);
         document.getElementById('videoForm').reset();
     }
 });
@@ -32,3 +33,19 @@ function addVideoToList(link, title) {
     
     videoList.appendChild(videoItem);
 }
+
+function saveVideoToLocalStorage(link, title) {
+    const videos = JSON.parse(localStorage.getItem('videos')) || [];
+    videos.push({ link, title });
+    localStorage.setItem('videos', JSON.stringify(videos));
+}
+
+function loadVideosFromLocalStorage() {
+    const videos = JSON.parse(localStorage.getItem('videos')) || [];
+    videos.forEach(video => {
+        addVideoToList(video.link, video.title);
+    });
+}
+
+// পেজ লোড হলে সংরক্ষিত ভিডিওগুলি লোড করুন
+document.addEventListener('DOMContentLoaded', loadVideosFromLocalStorage);
